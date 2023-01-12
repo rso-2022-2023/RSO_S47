@@ -8,18 +8,20 @@
 
 ## 1. Opis projekta
 ### 1.1. Povzetek
-**Aplikacija Quick Wheels** omogoča skrbnikom vseh vrst dostavnih podjetij izračunati optimalno dostavno pot za nabor naročil v določenem času na podlagi različnih kriterijev - vrste naročila, prometa, lokacije naročnika, lokacije ponudnika ter prevoznega sredstva dostavljavca. Da bi lahko vse to omogočala, aplikacija uporablja dve razvite mikrostoritvi - **mikrostoritev za naročila** in **mikrostoritev za dostavo**, od katerih ima vsaka svoj API in podatkovno bazo. Ti dve mikrostiritvi sodelujeta med seboj ter s zunanjo mikrostoritev za zemljevide **Google Maps**, da bi lahko uporabniki izkoristili glavne primere uporabe aplikacije.
+**Aplikacija Quick Wheels** omogoča skrbnikom vseh vrst dostavnih podjetij izračunati optimalno dostavno pot za nabor naročil v določenem času na podlagi različnih kriterijev - vrste naročila, prometa, lokacije naročnika, lokacije ponudnika ter prevoznega sredstva dostavljavca. Da bi lahko vse to omogočala, aplikacija uporablja dve razvite mikrostoritvi - **mikrostoritev za naročila** in **mikrostoritev za dostavo**, od katerih ima vsaka svoj API in podatkovno bazo. Ti dve mikrostiritvi sodelujeta med seboj ter s zunanjo mikrostoritev za zemljevide **Amazon Location Service**, da bi lahko uporabniki izkoristili glavne primere uporabe aplikacije.
 
 ### 1.2. Osnovni primeri uporabe aplikacije
-Primeri uporabe aplikacije lahko v grobem razdelimo na funkcionalnosti o:
-+ statusih naročil - ustvarjanje novega statusa naročila, prikaz seznam statusov naročil, posodabljanje obstoječega statusa naročila;
-+ izdelkov - ustvarjanje novega izdelka, prikaz seznam izdelkov, posodabljanje obstoječega izdelka;
-+ naročil - ustvarjanje novega naročila, prikaz seznam naročil, posodobitev obstoječega naročila;
-+ naročnikih - ustvarjanje novega naročnika, prikaz seznam vseh naročnikov, posodabljanje obstoječega naročnika;
-+ dostavnih prevozov - ustvarjanje novega dostavnega prevoza, prikaz seznam vseh dostavnih prevozov, posodabljanje obsteječega dostavnega prevoza;
-+ vrst dostave - ustvarjanje nove vrste dostave, prikaz seznam vseh vrst dostave, posodabljanje obstoječo vrsto dostave;
-+ dostave - ustvarjanje novo dostavo, prikaz seznam vseh dostav, posodabljanje obstoječo dostavo;
-+ kompleksnih zahtev - prikaz optimalne poti za izbrano dostavo, prikaz več kot ene možne poti dostave, prikaz prometa na izračunani poti dostave, posodabljanje izračunane poti dostave, prikaz možnih počivališč na dostavni poti, prikaz možnih bencinskih črpalk na dostavni poti, uporaba trenutne naprave kot lokacije ponudnika (funkcionalnost GPS)
+V aplikaciji imamo le eno vlogo - administrator, ki upravlja z naročili in njihovo dostavo. Primeri uporabe aplikacije lahko v grobem razdelimo na funkcionalnosti o:
++	Izdelava novega naročila, ki vsebuje določeno količino izbranega izdelka iz baze.
++	Ogled seznama obstoječih naročil in podrobnosti o njih.
++	Urejanje obstoječih naročil.
++	Kreiranje nove dostave za eno ali več naročil za določeno stranko iz baze.
++	Ogled seznama obstoječih dostav in podrobnosti o njih.
++	Urejanje obstoječih dostav.
++	Prikaz zemljevida.
++	Prikaz poti od prodajalca do kupca na zemljevidu.
++	Izračunan čas dostave glede na vrste prevoza in dostave.
+
 
 ### 1.3. Uporabljena tehnologija
 + Ogrodje in razvojno okolje, ki ju nameravate uporabljati pri razvoju vaše rešitve
@@ -28,18 +30,29 @@ Aplikacijo in mikrostoritve smo razvili v ratvojnem okolju IntelliJ IDEA. Za raz
 ## 2. Uporabljene mikrostoritve
 ### 2.1. Opis mikrostoritve za naročila ([povezava](https://github.com/rso-2022-2023/RSO_S47_Order))
 #### Povzetek
+Mikrostoritev za naročila se uporablja za interakcijo z entitetami, kot so naročila in izdelki. Uporablja REST API in operacije CRUD in se lahko kombinira s katero koli dostavno mikrostoritvijo.
 #### Osnovni funkcionalnosti
++	statusih naročil - ustvarjanje novega statusa naročila, prikaz seznam statusov naročil, posodabljanje obstoječega statusa naročila;
++	izdelkov - ustvarjanje novega izdelka, prikaz seznam izdelkov, posodabljanje obstoječega izdelka;
++	naročil - ustvarjanje novega naročila, prikaz seznam naročil, posodobitev obstoječega naročila;
 ### 2.2. Opis mikrostoritve za dostavo ([povezava](https://github.com/rso-2022-2023/RSO_S47_Delivery))
 #### Povzetek
+Mikrostoritev za dostave se uporablja za interakcijo z entitetami, kot so dostave in stranke. Uporablja REST API in operacije CRUD in se lahko kombinira s katero koli mikrostoritvijo naročila. Implementira tudi Amazon Location Service, kar omogoča dodatne funkcionalnosti.
 #### Osnovni funkcionalnosti
-### 2.3. Opis zunanje mikrostorive za zemljevide ([povezava](https://developers.google.com/maps/documentation))
++	naročnikih - ustvarjanje novega naročnika, prikaz seznam vseh naročnikov, posodabljanje obstoječega naročnika;
++	dostave - ustvarjanje novo dostavo, prikaz seznam vseh dostav, posodabljanje obstoječo dostavo;
++	naslov - ustvarjanje novega naslova, prikaz seznam vseh naslovov, posodabljanje obstoječega naslov;
++	vrst dostave - ustvarjanje nove vrste dostave, prikaz seznam vseh vrst dostave, posodabljanje obstoječo vrsto dostave;
++	statusih dostave - ustvarjanje novega statusa dostave, prikaz seznam statusov dostave, posodabljanje obstoječega statusa dostave;
++	dostavnih prevozov - ustvarjanje novega dostavnega prevoza, prikaz seznam vseh dostavnih prevozov, posodabljanje obsteječega dostavnega prevoza;
+
+### 2.3. Opis zunanje mikrostoritve za zemljevide ([povezava](https://developers.google.com/maps/documentation))
 #### Povzetek
+Amazon Location Service se uporablja za interakcijo z zemljevidom, izračun poti glede na zemljepisno širino in dolžino ter druge uporabne funkcionalnosti. Mikrostoritev je implementirane v mikrostoritev za dostavo ter jo lahko dostopamo preko njegovih končnih točk (REST API).
 #### Osnovni funkcionalnosti
+
 
 ## 3. Načrt arhitekture
 ### 3.1. Shema arhitekture
+
 ### 3.2. Shema interakcij med miktrostoritvami
-+ Komunikacijske protokole
-+ Kompleksnejši zahtevek, pri obdelavi katerega bodo sodelovale vsaj tri mikrostoritve.
-### 3.3. Osnutki zaslonskih mask aplikacije
-### 3.4. Primeri podatkovnih objektov aplikacije
