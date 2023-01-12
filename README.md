@@ -50,7 +50,8 @@ Mikrostoritev za dostave se uporablja za interakcijo z entitetami, kot so dostav
 #### Povzetek
 Amazon Location Service se uporablja za interakcijo z zemljevidom, izračun poti glede na zemljepisno širino in dolžino ter druge uporabne funkcionalnosti. Mikrostoritev je implementirane v mikrostoritev za dostavo ter jo lahko dostopamo preko njegovih končnih točk (REST API).
 #### Osnovni funkcionalnosti
-
++ prikaz zemljevida;
++ izračun poti dostave glede na vrsto transporta in dostave;
 
 ## 3. Načrt arhitekture
 ### 3.1. Shema arhitekture
