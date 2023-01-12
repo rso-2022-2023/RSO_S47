@@ -55,5 +55,7 @@ Amazon Location Service se uporablja za interakcijo z zemljevidom, izračun poti
 
 ## 3. Načrt arhitekture
 ### 3.1. Shema arhitekture
+![architecture](https://user-images.githubusercontent.com/61247744/212198116-06f39157-85df-4b45-9399-1844140ff1eb.png)
 
 ### 3.2. Shema interakcij med miktrostoritvami
+![interaction](https://user-images.githubusercontent.com/61247744/212198054-146dd7db-b7e8-4b9e-89f4-305e1ea1f78f.png)
