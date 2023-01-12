@@ -3,7 +3,7 @@
 |:-----------------------------|:----------------------------------------------------|
 |**Naziv projekta**            |Quick Wheels                                         |
 |**Člani skupine**             |Nikolay Vasilev                                      |
-|**Naziv projekta**            |Ljubljana, 14. 11. 2022                              |
+|**Kraj in datum**             |Ljubljana, 12. 01. 2023                              |
 
 
 ## 1. Opis projekta
